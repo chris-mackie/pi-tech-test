@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Find permit API
+  version: 1.0.0
+servers:
+  - url: 'https://permits.test.com'
+paths:
+  "/":
+    get:
+      description: Finds a matching permit for the given parking session details
+      tags:
+        - Permits
+      parameters:
+        - name: vrm
+          description: VRM of vehicle
+          in: query
+          required: true
+          schema:
+            type: string
+            example: TE12ABC
+        - name: starts_at
+          description: Start time of parking session
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            example: 2024-05-01T16:00:00+00:00
+        - name: ends_at
+          description: End time of parking session
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date-time
+            example: 2024-05-01T16:00:00+00:00
+        - name: space_id
+          description: Space ID where vehicle parked
+          in: query
+          required: true
+          schema:
+            type: string
+            example: a1b2c3
+      responses:
+        200:
+          description: Permit found. Response includes permit ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      permit_id:
+                        description: Matching permit ID for provided parking session
+                        schema:
+                          type: string
+                          example: d4e5f6
+        404:
+          description: No matching permits found
+        422:
+          description: Invalid request
+        500:
+          description: Server error
+
+
