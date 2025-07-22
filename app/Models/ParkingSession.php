@@ -12,6 +12,7 @@ use MongoDB\Laravel\Eloquent\Model;
  * @property Carbon $starts_at
  * @property Carbon $ends_at
  * @property string $space_id
+ * @property string|null $permit_id
  */
 class ParkingSession extends Model
 {
@@ -22,5 +23,6 @@ class ParkingSession extends Model
         'starts_at',
         'ends_at',
         'space_id',
+        'permit_id',
     ];
 }

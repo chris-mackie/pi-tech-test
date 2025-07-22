@@ -17,6 +17,7 @@ class ParkingSessionResource extends JsonResource
             'starts_at' => $this->starts_at,
             'ends_at' => $this->ends_at,
             'space_id' => $this->space_id,
+            'permit_id' => $this->permit_id ?: null,
         ];
     }
 }
