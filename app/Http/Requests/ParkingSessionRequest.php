@@ -20,6 +20,7 @@ class ParkingSessionRequest extends FormRequest
             ],
             'ends_at' => [
                 'date_format:' . DateTimeInterface::ATOM,
+                'after:starts_at',
             ],
             'space_id' => [
                 'required',
